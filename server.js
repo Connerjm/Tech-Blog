@@ -30,7 +30,7 @@ const sess =
 app.use(session(sess));
 
 //Handlebars setup.
-app.engine("handlesbars", hbs.engine);
+app.engine("handlebars", hbs.engine);
 app.set("view engine", "handlebars");
 
 //Express setup.
