@@ -1,7 +1,7 @@
 /* Imports */
 
-const { Model, DataTypes, DATE } = require('sequelize');
-const sequelize = require('../config/connection');
+const { Model, DataTypes, DATE } = require("sequelize");
+const sequelize = require("../config/connection");
 
 /* Constructor */
 
