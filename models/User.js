@@ -51,16 +51,18 @@ User.init(
         {
             beforeCreate: async (userData) =>
             {
-                userData.password = await bcrypt.hash(userData.password, "pepper");
+                userData.password = await bcrypt.hash(userData.password, 42);
                 return userData;
             },
             beforeUpdate: async (userData) =>
             {
-                userData.password = await bcrypt.hash(userData.password, "pepper");
+                userData.password = await bcrypt.hash(userData.password, 42);
                 return userData;
             }
         },
-        sequelize
+        sequelize,
+        freezeTableName: true,
+        modelName: "user"
     }
 );
 
