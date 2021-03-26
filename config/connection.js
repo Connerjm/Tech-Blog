@@ -3,15 +3,15 @@
 const Sequelize = require("sequelize");
 require("dotenv").config();
 
-//The sequelize object.
+// The sequelize object.
 let sequelize;
 
-//Setting the object.
-if (process.env.JAWSDB_URL)//If Heroku gives the DB.
+// Setting the object.
+if (process.env.JAWSDB_URL)// If Heroku gives the DB.
 {
     sequelize = new Sequelize(process.env.JAWSDB_URL);
 }
-else//Else its a local connection.
+else// Else its a local connection.
 {
     sequelize = new Sequelize(
         process.env.DB_NAME,
@@ -25,5 +25,5 @@ else//Else its a local connection.
     );
 }
 
-//Exports the object.
+// Exports the object.
 module.exports = sequelize;

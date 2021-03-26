@@ -12,7 +12,7 @@ class Comment extends Model
 
 Comment.init(
     {
-        id :
+        id:
         {
             type: DataTypes.INTEGER,
             allowNull: false,
