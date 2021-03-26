@@ -5,7 +5,8 @@ const sequelize = require("../config/connection");
 
 /* Constructor */
 
-class Comment extends Model {}
+class Comment extends Model
+{}
 
 /* Initializing */
 

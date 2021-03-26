@@ -8,39 +8,39 @@ const Comment = require("./Comment");
 
 //User and Post
 User.hasMany(Post,
-{
-    foreignKey: "author_id",
-    onDelete: "CASCADE"
-});
+    {
+        foreignKey: "author_id",
+        onDelete: "CASCADE"
+    });
 
 Post.belongsTo(User,
-{
-    foreignKey: "author_id"
-});
+    {
+        foreignKey: "author_id"
+    });
 
 //Post and Comment
 Post.hasMany(Comment,
-{
-    foreignKey: "parent_id",
-    onDelete: "CASCADE"
-});
+    {
+        foreignKey: "parent_id",
+        onDelete: "CASCADE"
+    });
 
 Comment.belongsTo(Post,
-{
-    foreignKey: "parent_id"
-});
+    {
+        foreignKey: "parent_id"
+    });
 
 //User and Comment
 User.hasMany(Comment,
-{
-    foreignKey: "author_id",
-    onDelete: "CASCADE"
-});
+    {
+        foreignKey: "author_id",
+        onDelete: "CASCADE"
+    });
 
 Comment.belongsTo(User,
-{
-    foreignKey: "author_id"
-});
+    {
+        foreignKey: "author_id"
+    });
 
 /* Exports */
 
