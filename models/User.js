@@ -18,7 +18,7 @@ class User extends Model
 
 User.init(
     {
-        id :
+        id:
         {
             type: DataTypes.INTEGER,
             allowNull: false,
@@ -33,7 +33,7 @@ User.init(
             validate:
             {
                 isAlphanumeric: true,
-                notContains: ["fuck", "shit", "hell", "bitch"]//No bad words.
+                notContains: [["fuck", "shit", "hell", "bitch"]]//No bad words.
             }
         },
         password:
@@ -51,12 +51,12 @@ User.init(
         {
             beforeCreate: async (userData) =>
             {
-                userData.password = await bcrypt.hash(userData.password, 42);
+                userData.password = await bcrypt.hash(userData.password, 10);
                 return userData;
             },
             beforeUpdate: async (userData) =>
             {
-                userData.password = await bcrypt.hash(userData.password, 42);
+                userData.password = await bcrypt.hash(userData.password, 10);
                 return userData;
             }
         },

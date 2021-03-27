@@ -11,3 +11,5 @@ SELECT * FROM user;
 SELECT * FROM post;
 
 SELECT * FROM comment;
+
+SELECT username, title AS Title, content AS Body, post.createdAt AS Date FROM user JOIN post ON user.id = post.author_id;
