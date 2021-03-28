@@ -29,17 +29,29 @@
 
             <div id="navbar" class="navbar-menu">
                 <div class="navbar-start">
-                    <a class="navbar-item">
+                    <a class="navbar-item" href="/home">
                         Home
                     </a>
-                    <a class="navbar-item">
+                    <a class="navbar-item" href="/dashboard">
                         Dashboard
                     </a>
+                    {{#if loggedIn}}
+                    <a class="navbar-item" href="/logout">
+                        Logout
+                    </a>
+                    {{else}}
+                    <a class="navbar-item" href="/login">
+                        Login
+                    </a>
+                    {{/if}}
                 </div>
             </div>
         </nav>
     </header>
-    {{{body}}}
+
+    <main class="is-flex is-align-content-center is-justify-content-space-between">
+        {{{body}}}
+    </main>
 </body>
 
 </html>
