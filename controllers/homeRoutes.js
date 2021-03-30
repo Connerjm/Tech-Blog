@@ -35,7 +35,7 @@ router.get("/login", (req, res) =>
         res.redirect("/");
     }
     
-    res.render("loginorregister");
+    res.render("loginorregister", { newUser: true });
 });
 
 router.get("/*", (req, res) =>
