@@ -23,4 +23,24 @@ router.get("/", async (req, res) =>
     }
 });
 
+router.get("/dashboard", (req, res) =>
+{
+    //Can only go here if logged in. Must pass username to the template.
+});
+
+router.get("/login", (req, res) =>
+{
+    if (req.session.loggedIn)
+    {
+        res.redirect("/");
+    }
+    
+    res.render("loginorregister");
+});
+
+router.get("/*", (req, res) =>
+{
+    res.status(404).json({ message: "Wrong route." });
+});
+
 module.exports = router;
