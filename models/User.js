@@ -42,7 +42,7 @@ User.init(
             allowNull: false,
             validate:
             {
-                length: [8, 25]//Must be between 8 and 25 characters.
+                len: [8, 25]//Must be between 8 and 25 characters.
             }
         }
     },

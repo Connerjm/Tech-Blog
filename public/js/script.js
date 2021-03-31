@@ -8,7 +8,19 @@ $(document).ready(() =>
         $(".navbar-menu").toggleClass("is-active");
     });
 
-    $("#login-or-register-button").click(async event =>
+    $("#switch").click(() =>
+    {
+        if ($("#login-or-register-button").text().trim() === "Login")
+        {
+            document.location.replace("/register");
+        }
+        else
+        {
+            document.location.replace("/login");
+        }
+    });
+
+    $("#login-or-register-button").click(event =>
     {
         event.preventDefault();
 
@@ -17,21 +29,29 @@ $(document).ready(() =>
 
         if (username && password)
         {
-            const response = await $.ajax({
+            $.ajax({
                 url: $("#login-or-register-button").text().trim() === "Login" ? "/api/users/login" : "/api/users",
                 type: "POST",
                 data: JSON.stringify({ username, password }),
-                headers: { "Content-Type": "application/json" }
+                headers: { "Content-Type": "application/json" },
+                success: () => { document.location.replace("/") },
+                error: (request, text, error) => {
+                    alert(`Wrong credentials. Try again.`);
+                }
             });
-
-            if (response.ok)
-            {
-                document.location.replace("/");
-            }
-            else
-            {
-                alert(response.statusText);
-            }
         }
+    });
+
+    $("#logout-script").click(() =>
+    {
+        $.ajax({
+            url: "api/users/logout",
+            type: "POST",
+            headers: { "Content-Type": "application/json" },
+            success: () => { document.location.replace("/login") },
+            error: (request, text, error) => {
+                alert(`Something went wrong! Status: ${text}; Error ${error}`)
+            }
+        });
     });
 });

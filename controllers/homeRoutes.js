@@ -15,7 +15,7 @@ router.get("/", async (req, res) =>
 
         const posts = postData.map(post => post.get({ plain: true }));
 
-        res.render("home", { posts });
+        res.render("home", { posts, loggedIn: req.session.loggedIn });
     }
     catch (err)
     {
@@ -29,6 +29,16 @@ router.get("/dashboard", (req, res) =>
 });
 
 router.get("/login", (req, res) =>
+{
+    if (req.session.loggedIn)
+    {
+        res.redirect("/");
+    }
+    
+    res.render("loginorregister", { newUser: false });
+});
+
+router.get("/register", (req, res) =>
 {
     if (req.session.loggedIn)
     {
