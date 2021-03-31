@@ -1,6 +1,7 @@
 const router = require("express").Router();
 const { Post, User } = require("../models");
 
+//Home
 router.get("/", async (req, res) =>
 {
     try
@@ -23,11 +24,35 @@ router.get("/", async (req, res) =>
     }
 });
 
-router.get("/dashboard", (req, res) =>
+//Dashboard
+router.get("/dashboard", async (req, res) =>
 {
-    //Can only go here if logged in. Must pass username to the template.
+    //Can only go here if logged in.
+    try
+    {
+        const postData = await Post.findAll({
+            include:
+            [{
+                model: User,
+                attributes: ["username"]
+            }],
+            where:
+            {
+                author_id: req.session.userId
+            }
+        });
+
+        const posts = postData.map(post => post.get({ plain: true }));
+
+        res.render("dashboard", { posts, loggedIn: req.session.loggedIn });
+    }
+    catch (err)
+    {
+        res.status(500).json(err);
+    }
 });
 
+//Login
 router.get("/login", (req, res) =>
 {
     if (req.session.loggedIn)
@@ -38,6 +63,7 @@ router.get("/login", (req, res) =>
     res.render("loginorregister", { newUser: false });
 });
 
+//Register
 router.get("/register", (req, res) =>
 {
     if (req.session.loggedIn)
@@ -48,6 +74,7 @@ router.get("/register", (req, res) =>
     res.render("loginorregister", { newUser: true });
 });
 
+//Anything else
 router.get("/*", (req, res) =>
 {
     res.status(404).json({ message: "Wrong route." });
