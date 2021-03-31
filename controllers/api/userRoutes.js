@@ -8,8 +8,6 @@ router.post("/", async (req, res) =>
     {
         const userData = await User.create(req.body);
 
-        console.log(req.body);
-
         req.session.save(() =>
         {
             req.session.userId = userData.id;
