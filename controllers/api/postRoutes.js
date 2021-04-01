@@ -1,6 +1,5 @@
 const router = require('express').Router();
 const { Post } = require('../../models');
-const { findByPk } = require('../../models/User');
 
 //Create
 router.post("/", async (req, res) =>
@@ -30,7 +29,7 @@ router.patch("/:postId", async (req, res) =>
 
         if (!postData)
         {
-            res.status(404).json({ message: "No post with that id. I don't even know how you got here." });
+            res.status(404).json({ message: "No post with that id." });
             return;
         }
 
@@ -53,7 +52,7 @@ router.delete("/:postId", async (req, res) =>
 
         if (!postData)
         {
-            res.status(404).json({ message: "No post with that id. I don't even know how you got here." });
+            res.status(404).json({ message: "No post with that id." });
         }
 
         res.status(200).json(postData);
