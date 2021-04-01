@@ -25,9 +25,9 @@ $(document).ready(() =>
         }
     });
 
-    $("#login-or-register-button").click(event =>
+    $("#login-or-register-button").click(e =>
     {
-        event.preventDefault();
+        e.preventDefault();
 
         const username = $("#username-input").val().trim();
         const password = $("#password-input").val().trim();
@@ -69,6 +69,33 @@ $(document).ready(() =>
     });
 
     //New post
+    $("#new-post-button").click(() =>
+    {
+        document.location.replace("/new-post");
+    });
+
+    //Create post
+    $("#create-post-button").click((e) =>
+    {
+        e.preventDefault();
+
+        const title = $("#title-input").val().trim();
+        const content = $("#content-input").val().trim();
+
+        if (title && content)
+        {
+            $.ajax({
+                url: "/api/posts",
+                type: "POST",
+                data: JSON.stringify({ title, content }),
+                headers: { "Content-Type": "application/json" },
+                success: (response) => { document.location.replace(`/post/${response.id}`) },
+                error: (request, text, error) => {
+                    alert(`Whoops. Something went wrong.`);
+                }
+            });
+        }
+    });
 
     //Edit post
 

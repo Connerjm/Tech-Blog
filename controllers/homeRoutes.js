@@ -105,6 +105,12 @@ router.get("/register", (req, res) =>
     res.render("loginorregister", { newUser: true });
 });
 
+//New post
+router.get("/new-post", auth, (req, res) =>
+{
+    res.render("new-post", { loggedIn: req.session.loggedIn });
+});
+
 //Anything else
 router.get("/*", (req, res) =>
 {
