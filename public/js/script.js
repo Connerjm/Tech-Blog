@@ -1,5 +1,10 @@
 $(document).ready(() =>
 {
+    $(".nav-icon").click(() =>
+    {
+        document.location.replace("/");
+    });
+
     // Check for click events on the navbar burger icon
     $(".navbar-burger").click(() =>
     {
@@ -56,13 +61,11 @@ $(document).ready(() =>
     });
 
     //Clicking a post
-    $(".post-card").click(() =>
+    $(".post-card").click((e) =>
     {
-        let postId = $(this).data("postid");
+        let postId = e.currentTarget.getAttribute("data-postid");
 
-        console.log(postId);
-
-        //document.location.replace("/post/:postId");
+        document.location.replace(`/post/${postId}`);
     });
 
     //New post

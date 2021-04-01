@@ -1,11 +1,18 @@
-.nav-icon {
+.nav-icon
+{
     border-radius: 5px;
     background-color: black;
     padding: 5px;
     font-size: larger;
 }
 
-#login-or-register {
+.nav-icon:hover
+{
+    cursor: pointer;
+}
+
+#login-or-register
+{
     max-width: 750px;
     margin-top: 25px;
 }
