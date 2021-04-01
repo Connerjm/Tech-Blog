@@ -1,5 +1,6 @@
 const router = require("express").Router();
 const { Post, User } = require("../models");
+const auth = require("../utils/auth");
 
 //Home
 router.get("/", async (req, res) =>
@@ -25,9 +26,8 @@ router.get("/", async (req, res) =>
 });
 
 //Dashboard
-router.get("/dashboard", async (req, res) =>
+router.get("/dashboard", auth, async (req, res) =>
 {
-    //Can only go here if logged in.
     try
     {
         const postData = await Post.findAll({

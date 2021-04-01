@@ -2,7 +2,7 @@ const router = require('express').Router();
 const { Post } = require('../../models');
 
 //Create
-router.post("/", async (req, res) =>
+router.post("/", auth, async (req, res) =>
 {
     try
     {
@@ -19,7 +19,7 @@ router.post("/", async (req, res) =>
 });
 
 //Edit
-router.patch("/:postId", async (req, res) =>
+router.patch("/:postId", auth, async (req, res) =>
 {
     try
     {
@@ -42,7 +42,7 @@ router.patch("/:postId", async (req, res) =>
 });
 
 //Delete
-router.delete("/:postId", async (req, res) =>
+router.delete("/:postId", auth, async (req, res) =>
 {
     try
     {
