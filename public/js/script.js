@@ -56,6 +56,14 @@ $(document).ready(() =>
     });
 
     //Clicking a post
+    $(".post-card").click(() =>
+    {
+        let postId = $(this).data("postid");
+
+        console.log(postId);
+
+        //document.location.replace("/post/:postId");
+    });
 
     //New post
 

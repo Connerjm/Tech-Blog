@@ -1,5 +1,5 @@
 const router = require("express").Router();
-const { Post, User } = require("../models");
+const { Post, User, Comment } = require("../models");
 const auth = require("../utils/auth.js");
 
 //Home
@@ -49,6 +49,37 @@ router.get("/dashboard", auth, async (req, res) =>
     catch (err)
     {
         res.status(500).json(err);
+    }
+});
+
+//Single post
+router.get("/post/:postId", async (req, res) =>
+{
+    try
+    {
+        const postData = await Post.findByPk(req.params.postId, {
+            include: {
+                model: User
+            }
+        });
+
+        const post = postData.get({ plain: true });
+
+        const commentData = await Comment.findAll({
+            where: { parent_id: post.id }
+        });
+
+        const comments = commentData.map(comment => comment.get({ plain: true }));
+        
+        console.log(post);
+        console.log(comments);
+        console.log(req.session.loggedIn);
+
+        res.render("post", { post, comments, loggedIn: req.session.loggedIn});
+    }
+    catch (err)
+    {
+        res.status(400).json(err);
     }
 });
 
