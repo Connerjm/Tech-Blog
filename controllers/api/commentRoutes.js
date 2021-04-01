@@ -5,6 +5,8 @@ const auth = require("../../utils/auth.js");
 //Create
 router.post("/:postId", auth, async (req, res) =>
 {
+    console.log(req.params.postId);
+    console.log(req.body);
     try
     {
         const commentData = await Comment.create({

@@ -102,6 +102,33 @@ $(document).ready(() =>
     //Delete post
 
     //New comment
+    $("#new-comment-button").click(() =>
+    {
+        $("#new-comment-card").css("display", "block");
+    });
+
+    //Create comment
+    $("#create-comment-button").click((e) =>
+    {
+        e.preventDefault();
+
+        const comment = $("#comment-input").val().trim();
+
+        if (comment)
+        {
+            const urlArr = location.href.split("/");
+            $.ajax({
+                url: `/api/comments/${urlArr[urlArr.length - 1]}`,
+                type: "POST",
+                data: JSON.stringify({ content: comment }),
+                headers: { "Content-Type": "application/json" },
+                success: (response) => { location.reload() },
+                error: (request, text, error) => {
+                    alert(`Whoops. Something went wrong.`);
+                }
+            });
+        }
+    });
 
     //Edit comment
 

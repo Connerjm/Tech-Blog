@@ -3,4 +3,17 @@
 {{#each comments as |comment|}}
 {{> comment-details}}
 {{/each}}
-<button id="new-comment" class="button is-dark">Comment</button>
+<button id="new-comment-button" class="button is-dark">Comment</button>
+
+<section class="section" id="new-comment-card" style="display: none;">
+    <div class="field">
+        <div class="control">
+            <textarea id="comment-input" class="textarea" placeholder="Be nice!"></textarea>
+        </div>
+    </div>
+    <p class="control">
+        <button id="create-comment-button" class="button is-dark">
+            Create comment
+        </button>
+    </p>
+</section>
