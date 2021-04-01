@@ -54,4 +54,18 @@ $(document).ready(() =>
             }
         });
     });
+
+    //Clicking a post
+
+    //New post
+
+    //Edit post
+
+    //Delete post
+
+    //New comment
+
+    //Edit comment
+
+    //Delete comment
 });
