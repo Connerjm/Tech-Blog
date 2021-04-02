@@ -1,18 +1,29 @@
-.nav-icon
-{
+.nav-icon {
     border-radius: 5px;
     background-color: black;
     padding: 5px;
     font-size: larger;
 }
 
-.nav-icon:hover
-{
+.nav-icon:hover {
     cursor: pointer;
 }
 
-#login-or-register
-{
+#login-or-register {
     max-width: 750px;
     margin-top: 25px;
+}
+
+.box {
+    margin: 10px;
+    border: soild black 2px;
+}
+
+#new-comment-button,
+#create-comment-button,
+#new-post-button,
+#create-post-button {
+    margin: 10px auto;
+    display: block;
+    width: 250px;
 }

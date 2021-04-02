@@ -53,7 +53,7 @@ router.get("/dashboard", auth, async (req, res) =>
 });
 
 //Single post
-router.get("/post/:postId", async (req, res) =>
+router.get("/post/:postId", auth, async (req, res) =>
 {
     try
     {
