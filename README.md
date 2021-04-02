@@ -10,8 +10,7 @@
 
 - [Description](#description)
 - [Features](#features)
-- [Usage](#usage)
-- [Demonstration](#demonstration)
+- [Deployment](#deployment)
 - [License](#license)
 
 ## Description
@@ -39,11 +38,10 @@ The features of this application are:
 - [x] WHEN I click on the logout option in the navigation, THEN I am signed out of the site.
 - [x] WHEN I am idle on the page for more than a set time, THEN I am automatically signed out of the site.
 
-## Usage
+## Deployment
 
-## Demonstration
-
-![Demonstration](./assets/placeholder)
+- [Live on Heroku](https://blueberry-cake-72168.herokuapp.com/)
+- [GitHub Repo](https://github.com/Connerjm/Tech-Blog)
 
 ## License
 
