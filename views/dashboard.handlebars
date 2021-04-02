@@ -1,4 +1,12 @@
 <button id="new-post-button" class="button is-dark">New post</button>
 {{#each posts as |post|}}
-{{> post-details}}
+<div class="box container">
+    {{> post-details}}
+    <div>
+        <button class="post-edit-save-button"><i class="fas fa-edit"></i></button>
+        <button class="post-delete-button"><i class="fas fa-trash-alt"></i></button>
+    </div>
+    {{!-- fas fa-edit -becomes- fas fa-save --}}
+    {{!-- fas fa-trash-alt --}}
+</div>
 {{/each}}

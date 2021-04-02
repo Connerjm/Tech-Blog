@@ -98,8 +98,58 @@ $(document).ready(() =>
     });
 
     //Edit post
+    $(".post-edit-save-button").click((e) =>
+    {
+        const buttonElement = $(e.currentTarget);
+        const iconElement = $(buttonElement.children()[0]);
+
+        const bodyElement = $($(buttonElement.parent().prev().children()[1]).children()[0]);
+
+        const cardElement = buttonElement.parent().prev();
+        cardElement.off("click");
+
+        if (iconElement.hasClass("fa-edit"))//Clicked edit button
+        {
+            iconElement.removeClass("fa-edit");
+            iconElement.addClass("fa-save");
+
+            const text = bodyElement.text();
+
+            bodyElement.replaceWith(`<textarea class="textarea">${text}</textarea>`);
+        }
+        else//Clicked save button
+        {
+            const id = cardElement.data("postid");
+            const content = bodyElement.val().trim();
+
+            $.ajax({
+                url: `/api/posts/${id}`,
+                type: "PATCH",
+                data: JSON.stringify({ content }),
+                headers: { "Content-Type": "application/json" },
+                success: (response) => { document.location.replace(`/post/${response.id}`) },
+                error: (request, text, error) => {
+                    alert(`Whoops. Something went wrong.`);
+                }
+            });
+        }
+    });
 
     //Delete post
+    $(".post-delete-button").click((e) =>
+    {
+        const id = $(e.currentTarget).parent().prev().data("postid");
+
+        $.ajax({
+                url: `/api/posts/${id}`,
+                type: "DELETE",
+                headers: { "Content-Type": "application/json" },
+                success: (response) => { document.location.replace(`/dashboard`) },
+                error: (request, text, error) => {
+                    alert(`Whoops. Something went wrong.`);
+                }
+            });
+    });
 
     //New comment
     $("#new-comment-button").click(() =>
