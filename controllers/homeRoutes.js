@@ -12,7 +12,8 @@ router.get("/", async (req, res) =>
             [{
                 model: User,
                 attributes: ["username"]
-            }]
+            }],
+            order: [["createdAt", "DESC"]]
         });
 
         const posts = postData.map(post => post.get({ plain: true }));
@@ -39,7 +40,8 @@ router.get("/dashboard", auth, async (req, res) =>
             where:
             {
                 author_id: req.session.userId
-            }
+            },
+            order: [["createdAt", "DESC"]]
         });
 
         const posts = postData.map(post => post.get({ plain: true }));
